@@ -9,8 +9,8 @@ function resolve(dir) {
 const productionPlugins = [
   new PrerenderSPAPlugin({
     staticDir: path.join(__dirname, './dist'),
-    indexPath: path.join(__dirname, './dist/pc', 'index.html'),
-    routes: ['/pc/index', '/pc/home'],
+    indexPath: path.join(__dirname, './dist/v3/web', 'index.html'),
+    routes: ['/v3/web/index', '/v3/web/home'],
     postProcess(renderedRoute) {
       renderedRoute.html = renderedRoute.html
         .replace(/<script (.*?)>/g, `<script $1 defer>`)
@@ -31,8 +31,8 @@ const productionPlugins = [
 ]
 
 module.exports = {
-  publicPath: '/pc',
-  outputDir: 'dist/pc/',
+  publicPath: '/v3/web',
+  outputDir: 'dist/v3/web/',
   chainWebpack: (config) => {
     config.resolve.alias.set('@', resolve('src'))
     config.plugins.delete('prefetch') // 去掉预加载
